@@ -73,7 +73,7 @@ fun main() {
     // Den Film aus Angebot löschen
 
     filmeAngebot.remove(warenkorb)
-    filmePreise.remove(warenkorbPreis)
+    filmePreise.removeAt(warenkorbName)
 
     // Das Angebot aktualisieren
 
@@ -132,7 +132,7 @@ fun main() {
     // Den Film aus Angebot löschen
 
     filmeAngebot.remove(warenkorb1)
-    filmePreise.remove(warenkorbPreis1)
+    filmePreise.removeAt(warenkorbName1)
 
     // ----------------------------------------------------------------------------
 
@@ -151,5 +151,66 @@ fun main() {
 
     derBestand["The Badman"] = 19.99
 
+    //  Ist der Film im Sortiment
+    println("Welchen Film suchst du?")
+    var suchFeld = readln()
+    println("Ist $suchFeld im Sortiment? -> ${suchFeld in derBestand}")
+    println(" Der Preis dafür ist: ${derBestand[suchFeld]}")
+
+    // Den 3th Kunden Behandeln
+    var listeFilme = derBestand.keys.toList()
+    var listeFilmePreis = derBestand.values.toList()
+
+    // Die Begrüßung 3th Kunde
+
+    println("Bitte geben Sie hier ihren Namen ein:")
+    var kundenName2 = readln()
+
+    println("Hallo $kundenName2, willkommen in meiner Videothek: Galaxy\n")
+    println("Aktuell kann ich dir folgende Filme anbieten:")
+
+    println("${listeFilme[0]} für ${listeFilmePreis[0]} €")
+    println("${listeFilme[1]} für ${listeFilmePreis[1]} €")
+    println("${listeFilme[2]} für ${listeFilmePreis[2]} €")
+    println("${listeFilme[3]} für ${listeFilmePreis[3]} €")
+    println("${listeFilme[4]} für ${listeFilmePreis[4]} €")
+    println("${listeFilme[5]} für ${listeFilmePreis[5]} €\n")
+
+    // Den 3th Kunden bedienen :: unser bestes Angebot
+
+    var guenstigsterFilm2 = listeFilmePreis.indexOf(listeFilmePreis.min())
+    var guenstigsterFilmName2 = listeFilme[guenstigsterFilm2]
+    var guenstigsterFilmPreis2 = listeFilme[guenstigsterFilm2]
+
+    println("Aktuell ist unser bestes Angebot der Film $guenstigsterFilmName2 für $guenstigsterFilmPreis2 €\n")
+
+    // Den neuen Kunden bedienen :: einen Film auswählen
+
+    println("Welcher Film darf es denn sein?")
+    println("Bitte gib den Namen des Films hier ein:")
+
+    val warenkorb2 =  readln()
+    val warenkorbName2 =  listeFilme.indexOf(warenkorb1)
+    val warenkorbPreis2 = listeFilmePreis[warenkorbName2]
+
+    println("Also der Film: $warenkorb2 für $warenkorbPreis2 €\n")
+
+    // Den Kunden bedienen :: den Film bezahlen
+
+    println("Wie viel Geld hast du?")
+    println("Bitte gib den Betrag hier ein:")
+
+    val bargeld2 = readln().toDouble()
+    val wechselgeld2 = bargeld2 - warenkorbPreis2
+
+    println("Vielen Dank, du hast den Film $warenkorb2 für $warenkorbPreis2 € gekauft")
+    println("Du hast mir $bargeld2 € gegeben und bekommst $wechselgeld2 € zurück.\n")
+
+    println("Danke für den Einkauf $kundenName2 ich freue mich schon auf deinen nächsten Besuch :wink:\n")
+
+    // Den Film aus Angebot löschen
+
+    filmeAngebot.remove(warenkorb2)
+    filmePreise.removeAt(warenkorbName2)
 
 }
